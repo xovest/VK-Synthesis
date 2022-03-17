@@ -29,16 +29,21 @@ function myFunction() {
 
   //setting it back
   a.innerHTML = t
+  const el = document.querySelector("#msg > span")
+  el.addEventListener("onblur", makeTable(getPow()))
 }
 
 function getPow() {
   var a = document.querySelector("#msg > span")
   var s = a.innerHTML[a.innerHTML.length - 1]
+  if (s == 0) return 2
   let power = 1
   while (power <= s) power *= 2
   console.log(power);
   return power;
 }
+
+//just add the logic tomorrow, you're pathetic man... but still you got this:)
 
 function makeTable(a) {
   for (let i = 0; i < a; ++i) {
@@ -53,5 +58,3 @@ function makeTable(a) {
     adder.appendChild(dv)
   }
 }
-
-makeTable(getPow())
