@@ -12,7 +12,7 @@ function myFunction() {
   var arr = []
   for (let i = 0; i < s.length; i += 2) arr.push(s[i])
   arr.sort()
-
+  
   var narr = [...new Set(arr)]
   narr = narr.filter(n => n < 8)
 
@@ -27,10 +27,25 @@ function myFunction() {
     }
   }
 
+  for (let i = 0; i < narr.length; ++i) {
+    narr[i] = parseInt(narr[i])
+  }
+  
   //setting it back
   a.innerHTML = t
   const el = document.querySelector("#msg > span")
-  el.addEventListener("onblur", makeTable(getPow()))
+  el.addEventListener("onblur", makeTable(getPow(), narr))
+}
+// const el = document.querySelector("#msg > span")
+// el.addEventListener("onblur", makeTable(getPow()))
+
+function isIn(array, number) {
+  let ok = 0
+  for (let i = 0; i < array.length; ++i) {
+    if (array[i] == number)
+      ok = 1
+  }
+  return ok
 }
 
 function getPow() {
@@ -39,17 +54,23 @@ function getPow() {
   if (s == 0) return 2
   let power = 1
   while (power <= s) power *= 2
-  console.log(power);
+  // console.log(power);
   return power;
 }
 
 //just add the logic tomorrow, you're pathetic man... but still you got this:)
 
-function makeTable(a) {
+function makeTable(a, array) {
   for (let i = 0; i < a; ++i) {
     var adder = document.querySelector("body > div.table")
     var dv = document.createElement("div")
-    dv.className = "square"
+
+    if (isIn(array, i)) {
+      dv.className = 'square-one'
+    } else {
+      dv.className = 'square-zero'
+    }
+
     if (a == 2) {
       adder.style.gridTemplateColumns = `repeat(${a}, 182px)`
     } else {
