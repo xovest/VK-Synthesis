@@ -67,8 +67,10 @@ function makeTable(a, array) {
 
     if (isIn(array, i)) {
       dv.className = 'square-one'
+      dv.innerText = '1'
     } else {
       dv.className = 'square-zero'
+      dv.innerText = '0'
     }
 
     if (a == 2) {
@@ -77,5 +79,14 @@ function makeTable(a, array) {
       adder.style.gridTemplateColumns = `repeat(${a / 2}, 182px)`
     }
     adder.appendChild(dv)
+  }
+
+  for (let i = 0; i < a; ++i) {
+    var sqrs = document.querySelector(`body > div.table > div:nth-child(${i + 1})`)
+    if (isIn(array, i)) {
+      var circles = document.createElement("div")
+      circles.className = 'dot'
+      sqrs.appendChild(circles)
+    }
   }
 }
