@@ -63,7 +63,7 @@ h1:after {
   position: absolute;
   height: 100px;
   width: 100px;
-  background-color: white;
+  background-color: rgb(255, 0, 0);
   border: 1px solid black;
   border-radius: 50%;
   display: inline-block;
